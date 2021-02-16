@@ -1,4 +1,7 @@
 import random
+import time
+
+start_time = time.time()
 
 a0 = 1
 a1 = 2
@@ -47,3 +50,5 @@ print("X0| {} | {} | {} |".format(x0_1, x0_2, x0_3))
 print("dx| {} | {} | {} |".format(dx_1, dx_2, dx_3))
 print("\nAverage Y =", avg)
 print("Y <-- X1 - {} | X2 - {} | X3 - {}".format(X[0][number], X[1][number], X[2][number]))
+
+print("Working time - ", time.time() - start_time)
