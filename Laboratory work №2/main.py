@@ -106,6 +106,7 @@ print("\nOuv1: ", Ouv1)
 print("Ouv2: ", Ouv2)
 print("Ouv3: ", Ouv3)
 
+# Перевірка дисперсії на однорідність
 if Ruv1 > 2 or Ruv2 > 2 or Ruv3 > 2:
     print("\nДисперсія неоднорідна!")
     sys.exit()
