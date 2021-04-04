@@ -2,6 +2,9 @@ from random import randint
 from functools import reduce
 from numpy.linalg import det
 
+x1 = [-20, 15]
+x2 = [10, 60]
+x3 = [15, 35]
 
 def naturalize(matrix_of_plan, min_max_arr):
     result = []
@@ -10,14 +13,10 @@ def naturalize(matrix_of_plan, min_max_arr):
     return result
 
 
-def main():
-    x1 = [-20, 15]
-    x2 = [10, 60]
-    x3 = [15, 35]
-
-    print("x1: ", x1)
-    print("x2: ", x2)
-    print("x3: ", x3)
+def main(array1, array2, array3):
+    print("x1: ", array1)
+    print("x2: ", array2)
+    print("x3: ", array3)
 
     x0_plan_array = [1, 1, 1, 1]
     x1_plan_array = [-1, -1, 1, 1]
@@ -29,9 +28,9 @@ def main():
     print("x2:", x2_plan_array)
     print("x3:", x3_plan_array)
 
-    x1_plan_naturalized = naturalize(x1_plan_array, x1)
-    x2_plan_naturalized = naturalize(x2_plan_array, x2)
-    x3_plan_naturalized = naturalize(x3_plan_array, x3)
+    x1_plan_naturalized = naturalize(x1_plan_array, array1)
+    x2_plan_naturalized = naturalize(x2_plan_array, array2)
+    x3_plan_naturalized = naturalize(x3_plan_array, array3)
 
     print('\nx1:', x1_plan_naturalized)
     print('x2:', x2_plan_naturalized)
@@ -200,8 +199,16 @@ def main():
               "Отримана математична модель з прийнятим рівнем статистичної значимості q адекватна оригіналу")
     else:
         print("Fp > Fт. "
-            "Отримана математична модель з прийнятим рівнем статистичної значимості q не адекватна оригіналу")
+            "Отримана математична модель з прийнятим рівнем статистичної значимості q не адекватна оригіналу\n")
+        array = []
+        for i in range(3):
+            tmp_array = [randint(1, 1000) for k in range(2)]
+            array.append(tmp_array)
+        new_x1 = [min(array[0]), max(array[0])]
+        new_x2 = [min(array[1]), max(array[1])]
+        new_x3 = [min(array[2]), max(array[2])]
+        main(new_x1, new_x2, new_x3)
 
 
 if __name__ == '__main__':
-    main()
+    main(x1, x2, x3)
