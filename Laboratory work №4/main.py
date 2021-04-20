@@ -1,4 +1,5 @@
 from random import randint
+from scipy.stats import f,t
 
 
 def main(m_tmp):
@@ -108,9 +109,9 @@ def main(m_tmp):
     f1 = m - 1
     f2 = N
     f3 = f1 * f2
-
+    print(t.ppf(q=0.975, df=f3))
     for i in range(N):
-        if t_array[i] < 2.120:
+        if t_array[i] < t.ppf(q=0.975, df=f3):
             b_result[i] = 0
             d -= 1
             print('Виключаємо з рівняння статистично незначущий коефіціент b', i)
@@ -125,7 +126,7 @@ def main(m_tmp):
     print("Кількість значимих коефіціентів:", d)
     print("\nFp = ", Fp)
 
-    if Fp > 4.5:
+    if Fp > f.ppf(q=0.95, dfn=f4, dfd=f3):
         print("Рівняння регресії неадекватно оригіналу при рівні значимості 0.05")
     else:
         print("Рівняння регресії адекватно оригіналу при рівні значимості 0.05")
