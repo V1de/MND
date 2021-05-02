@@ -3,8 +3,11 @@ import numpy as np
 from scipy.stats import f, t
 import sklearn.linear_model as lm
 
+count = 0
+
 
 def main(m_tmp):
+    global count
     m = m_tmp
     n = 15
     x1min = -3
@@ -107,10 +110,9 @@ def main(m_tmp):
 
     if Gp > Gt:
         print("Дисперсія неоднорідна")
-        m += 1
-        main(m)
     else:
         print("Дисперсія однорідна")
+        count += 1
 
     # критерій Стьюдента
     print("\nПЕРЕВІРКА ЗНАЧУЩОСТІ КОЕФІЦІЄНТІВ ЗА КРИТЕРІЄМ СТЬЮДЕНТА")
@@ -153,4 +155,6 @@ def main(m_tmp):
 
 
 if __name__ == '__main__':
-    main(3)
+    for i in range(100):
+        main(3)
+    print("Кількість однорідних дисперсій - ", count)
