@@ -4,6 +4,7 @@ import numpy as np
 from numpy.linalg import solve
 from scipy.stats import f, t
 from prettytable import PrettyTable
+import time
 
 
 def main(current_m):
@@ -158,6 +159,7 @@ def main(current_m):
     for i in range(15):
         print("{:.3f}".format(y_i[i]), end=" ")
 
+    start_time = time.time()
     print("\nПЕРЕВІРКА ОДНОРІДНОСТІ ДИСПЕРСІЇ ЗА КРИТЕРІЄМ КОХРЕНА")
     Gp = max(dispersions) / sum(dispersions)
     Gt = 0.3346
@@ -211,6 +213,8 @@ def main(current_m):
         print("Рівняння регресії неадекватно оригіналу при рівні значимості 0.05")
     else:
         print("Рівняння регресії адекватно оригіналу при рівні значимості 0.05")
+    end_time = time.time()
+    print("\nЧас виконання статичних перевірок - ", end_time-start_time)
 
 
 if __name__ == '__main__':
